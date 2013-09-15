@@ -1,0 +1,18 @@
+{
+    "name": "elnur/bootstrap-bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Elnur Abdurrakhimov",
+            "email": "elnur@elnur.pro",
+            "homepage": "http://www.elnur.pro"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Elnur\\Bundle\\BootstrapBundle": ""
+        }
+    },
+    "target-dir": "Elnur/Bundle/BootstrapBundle"
+}
