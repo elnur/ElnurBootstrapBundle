@@ -90,6 +90,18 @@
     {% endspaceless %}
 {% endblock button_row %}
 
+{% block button_widget %}
+    {% spaceless %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
+            {% if icon %}<i class="icon-{{ icon }}"></i>{% endif %}
+            {{ label|trans({}, translation_domain) }}
+        </button>
+    {% endspaceless %}
+{% endblock button_widget %}
+
 {% block textarea_widget %}
     {% set attr = attr|merge({rows: 20, class: 'form-control'}) %}
     {{ parent() }}

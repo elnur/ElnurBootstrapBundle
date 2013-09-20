@@ -15,6 +15,7 @@ class ButtonTypeExtension extends AbstractTypeExtension
     {
         $resolver->setDefaults(array(
             'context' => 'default',
+            'icon' => null,
         ));
     }
 
@@ -25,7 +26,10 @@ class ButtonTypeExtension extends AbstractTypeExtension
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars['context'] = $options['context'];
+        $view->vars = array_merge($view->vars, array(
+            'context' => $options['context'],
+            'icon' => $options['icon'],
+        ));
     }
 
     /**
