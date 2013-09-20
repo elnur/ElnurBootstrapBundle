@@ -82,7 +82,7 @@
         <div class="form-group">
             <div class="col-lg-offset-2 col-lg-10">
         {% endif %}
-                {{ form_widget(form, {attr: {class: 'btn btn-default' }}) }}
+                {{ form_widget(form, {attr: {class: 'btn btn-default ' ~ attr.class|default }}) }}
         {% if layout|default('horizontal') == 'horizontal' %}
             </div>
         </div>
