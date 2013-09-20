@@ -14,5 +14,10 @@
             "Elnur\\Bundle\\BootstrapBundle": ""
         }
     },
-    "target-dir": "Elnur/Bundle/BootstrapBundle"
+    "target-dir": "Elnur/Bundle/BootstrapBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
 }
