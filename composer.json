@@ -1,6 +1,7 @@
 {
     "name": "elnur/bootstrap-bundle",
     "type": "symfony-bundle",
+    "keywords": ["bootstrap", "templating"],
     "license": "MIT",
     "authors": [
         {
