@@ -51,6 +51,12 @@
     {{ parent() }}
 {% endblock form_widget_simple %}
 
+{% block choice_widget_collapsed %}
+    {% set class = 'form-control ' ~ attr.class|default %}
+    {% set attr = attr|merge({class: class}) %}
+    {{ parent() }}
+{% endblock choice_widget_collapsed %}
+
 {% block choice_widget_expanded %}
     {% spaceless %}
         <div {{ block('widget_container_attributes') }}>
