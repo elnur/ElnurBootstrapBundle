@@ -1,7 +1,7 @@
 {% extends 'form_div_layout.html.twig' %}
 
 {% block form_start %}
-    {% set layout = layout|default('horizontal') %}
+    {% set layout = layout|default %}
     {% set class = '' %}
     {% if layout == 'horizontal' %}
         {% set class = 'form-horizontal ' ~ attr.class|default %}
@@ -20,7 +20,7 @@
 {% block form_rows %}
     {% spaceless %}
         {% for child in form %}
-            {{ form_row(child, {labels_to_placeholders: labels_to_placeholders|default(false), layout: layout|default('horizontal')}) }}
+            {{ form_row(child, {labels_to_placeholders: labels_to_placeholders|default(false), layout: layout|default}) }}
         {% endfor %}
     {% endspaceless %}
 {% endblock form_rows %}
@@ -29,10 +29,10 @@
     {% spaceless %}
         <div class="form-group {% if errors is not empty %}has-error{% endif %}">
             {% if not labels_to_placeholders|default(false) %}
-                {{ form_label(form, false, {label_attr: {class: 'col-lg-2 control-label' }}) }}
+                {{ form_label(form, false, {label_attr: {class: (layout|default == 'horizontal' ? 'col-lg-2 control-label' : '') }}) }}
             {% endif %}
 
-            {% if layout|default('horizontal') == 'horizontal' %}<div class="col-lg-10">{% endif %}
+            {% if layout|default == 'horizontal' %}<div class="col-lg-10">{% endif %}
                 {% if labels_to_placeholders|default(false) %}
                     {% set attr = attr|merge({placeholder: label}) %}
                 {% endif %}
@@ -41,7 +41,7 @@
                 {% if errors is not empty %}
                     <div class="help-block">{{ form_errors(form) }}</div>
                 {% endif %}
-            {% if layout|default('horizontal') == 'horizontal' %}</div>{% endif %}
+            {% if layout|default == 'horizontal' %}</div>{% endif %}
         </div>
     {% endspaceless %}
 {% endblock form_row %}
@@ -78,12 +78,12 @@
 
 {% block button_row %}
     {% spaceless %}
-        {% if layout|default('horizontal') == 'horizontal' %}
+        {% if layout|default == 'horizontal' %}
         <div class="form-group">
             <div class="col-lg-offset-2 col-lg-10">
         {% endif %}
                 {{ form_widget(form) }}
-        {% if layout|default('horizontal') == 'horizontal' %}
+        {% if layout|default == 'horizontal' %}
             </div>
         </div>
         {% endif %}
