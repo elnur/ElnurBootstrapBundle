@@ -82,7 +82,7 @@
         <div class="form-group">
             <div class="col-lg-offset-2 col-lg-10">
         {% endif %}
-                {{ form_widget(form, {attr: {class: 'btn btn-' ~ context ~ ' ' ~ attr.class|default }}) }}
+                {{ form_widget(form) }}
         {% if layout|default('horizontal') == 'horizontal' %}
             </div>
         </div>
@@ -91,6 +91,9 @@
 {% endblock button_row %}
 
 {% block button_widget %}
+    {% set class = 'btn btn-' ~ context ~ ' ' ~ attr.class|default %}
+    {% set attr = attr|merge({class: class}) %}
+
     {% spaceless %}
         {% if label is empty %}
             {% set label = name|humanize %}
