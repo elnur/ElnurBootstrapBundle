@@ -46,6 +46,16 @@
     {% endspaceless %}
 {% endblock form_row %}
 
+{% block form_rest %}
+    {% spaceless %}
+        {% for child in form %}
+            {% if not child.rendered %}
+                {{ form_row(child, {layout: layout|default}) }}
+            {% endif %}
+        {% endfor %}
+    {% endspaceless %}
+{% endblock form_rest %}
+
 {% block form_widget_simple %}
     {% set attr = attr|merge({class: 'form-control'}) %}
     {{ parent() }}
