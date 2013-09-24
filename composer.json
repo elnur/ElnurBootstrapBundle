@@ -1,6 +1,7 @@
 {
     "name": "elnur/bootstrap-bundle",
     "type": "symfony-bundle",
+    "description": "Unobtrusive support for Bootstrap 3",
     "keywords": [
         "bootstrap",
         "templating"
