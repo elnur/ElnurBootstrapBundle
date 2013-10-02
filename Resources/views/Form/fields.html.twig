@@ -15,7 +15,7 @@
     {% set labels_to_placeholders = labels_to_placeholders|default(false) %}
 
     {{ parent() }}
-{% endblock form_start %}
+{% endblock %}
 
 {% block form_rows %}
     {% spaceless %}
@@ -23,7 +23,7 @@
             {{ form_row(child, {labels_to_placeholders: labels_to_placeholders|default(false), layout: layout|default}) }}
         {% endfor %}
     {% endspaceless %}
-{% endblock form_rows %}
+{% endblock %}
 
 {% block form_row %}
     {% spaceless %}
@@ -44,7 +44,7 @@
             {% if layout|default == 'horizontal' %}</div>{% endif %}
         </div>
     {% endspaceless %}
-{% endblock form_row %}
+{% endblock %}
 
 {% block form_rest %}
     {% spaceless %}
@@ -54,18 +54,18 @@
             {% endif %}
         {% endfor %}
     {% endspaceless %}
-{% endblock form_rest %}
+{% endblock %}
 
 {% block form_widget_simple %}
     {% set attr = attr|merge({class: 'form-control'}) %}
     {{ parent() }}
-{% endblock form_widget_simple %}
+{% endblock %}
 
 {% block choice_widget_collapsed %}
     {% set class = 'form-control ' ~ attr.class|default %}
     {% set attr = attr|merge({class: class}) %}
     {{ parent() }}
-{% endblock choice_widget_collapsed %}
+{% endblock %}
 
 {% block choice_widget_expanded %}
     {% spaceless %}
@@ -80,7 +80,7 @@
             {% endfor %}
         </div>
     {% endspaceless %}
-{% endblock choice_widget_expanded %}
+{% endblock %}
 
 {% block form_errors %}
     {% spaceless %}
@@ -90,7 +90,7 @@
             {% endfor %}
         {% endif %}
     {% endspaceless %}
-{% endblock form_errors %}
+{% endblock %}
 
 {% block button_row %}
     {% spaceless %}
@@ -104,7 +104,7 @@
         </div>
         {% endif %}
     {% endspaceless %}
-{% endblock button_row %}
+{% endblock %}
 
 {% block button_widget %}
     {% set class = 'btn btn-' ~ context ~ ' ' ~ attr.class|default %}
@@ -119,9 +119,9 @@
             {{ label|trans({}, translation_domain) }}
         </button>
     {% endspaceless %}
-{% endblock button_widget %}
+{% endblock %}
 
 {% block textarea_widget %}
     {% set attr = attr|merge({class: 'form-control ' ~ attr.class|default}) %}
     {{ parent() }}
-{% endblock textarea_widget %}
+{% endblock %}
