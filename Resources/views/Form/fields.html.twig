@@ -122,6 +122,6 @@
 {% endblock button_widget %}
 
 {% block textarea_widget %}
-    {% set attr = attr|merge({class: 'form-control'}) %}
+    {% set attr = attr|merge({class: 'form-control ' ~ attr.class|default}) %}
     {{ parent() }}
 {% endblock textarea_widget %}
