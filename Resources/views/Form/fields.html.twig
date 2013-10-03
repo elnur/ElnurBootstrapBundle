@@ -82,6 +82,17 @@
     {% endspaceless %}
 {% endblock %}
 
+{% block checkbox_row %}
+    {% spaceless %}
+        <div class="checkbox">
+            <label>
+                {{ form_widget(form) }}
+                {{ form_label(form) }}
+            </label>
+        </div>
+    {% endspaceless %}
+{% endblock %}
+
 {% block form_errors %}
     {% spaceless %}
         {% if errors is not empty %}
