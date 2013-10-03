@@ -57,7 +57,9 @@
 {% endblock %}
 
 {% block form_widget_simple %}
-    {% set attr = attr|merge({class: 'form-control'}) %}
+    {% if type|default != 'file' %}
+        {% set attr = attr|merge({class: 'form-control'}) %}
+    {% endif %}
     {{ parent() }}
 {% endblock %}
 
