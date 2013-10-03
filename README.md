@@ -34,3 +34,21 @@ Then enable the bundle by adding the following to your `AppKernel.php`:
 
         // ...
     }
+
+Forms
+-----
+
+To render a form with default Bootstrap layout, just do the following:
+
+    {{ form(form) }}
+
+If you want to use another layout — say, horizontal — tell about that explicitly:
+
+    {{ form(form, {layout: 'horizontal'}) }}
+
+Supported layouts are:
+
+* default,
+* `horizontal`,
+* `inline`, and
+* `navbar`.
