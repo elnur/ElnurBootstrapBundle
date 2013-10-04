@@ -38,7 +38,7 @@ Then enable the bundle by adding the following to your `AppKernel.php`:
 Forms
 -----
 
-To render a form with default Bootstrap layout, just do the following:
+To render a form with the default Bootstrap layout, just do the following:
 
     {{ form(form) }}
 
