@@ -52,3 +52,10 @@ Supported layouts are:
 * `horizontal`,
 * `inline`, and
 * `navbar`.
+
+Flash Messages
+--------------
+
+To render flash messages just add the following to your layout template:
+
+    {% include 'ElnurBootstrapBundle::flash.html.twig' %}
