@@ -2,13 +2,13 @@
 
 {% block form_start %}
     {% set layout = layout|default %}
-    {% set class = '' %}
+    {% set class = attr.class|default %}
     {% if layout == 'horizontal' %}
-        {% set class = 'form-horizontal ' ~ attr.class|default %}
+        {% set class = 'form-horizontal ' ~ class %}
     {% elseif layout == 'inline' %}
-        {% set class = 'form-inline ' ~ attr.class|default %}
+        {% set class = 'form-inline ' ~ class %}
     {% elseif layout == 'navbar' %}
-        {% set class = 'navbar-form ' ~ attr.class|default %}
+        {% set class = 'navbar-form ' ~ class %}
     {% endif %}
 
     {% set attr = attr|merge({class: class}) %}
@@ -26,14 +26,16 @@
 {% endblock %}
 
 {% block form_row %}
+    {% set layout = layout|default %}
+    {% set labels_to_placeholders = labels_to_placeholders|default(false) %}
     {% spaceless %}
         <div class="form-group {% if errors is not empty %}has-error{% endif %}">
-            {% if not labels_to_placeholders|default(false) %}
-                {{ form_label(form, false, {label_attr: {class: (layout|default == 'horizontal' ? 'col-lg-2 control-label' : '') }}) }}
+            {% if not labels_to_placeholders %}
+                {{ form_label(form, false, {label_attr: {class: (layout == 'horizontal' ? 'col-lg-2 control-label' : '') }}) }}
             {% endif %}
 
-            {% if layout|default == 'horizontal' %}<div class="col-lg-10">{% endif %}
-                {% if labels_to_placeholders|default(false) %}
+            {% if layout == 'horizontal' %}<div class="col-lg-10">{% endif %}
+                {% if labels_to_placeholders %}
                     {% set attr = attr|merge({placeholder: label}) %}
                 {% endif %}
 
@@ -41,7 +43,7 @@
                 {% if errors is not empty %}
                     <div class="help-block">{{ form_errors(form) }}</div>
                 {% endif %}
-            {% if layout|default == 'horizontal' %}</div>{% endif %}
+            {% if layout == 'horizontal' %}</div>{% endif %}
         </div>
     {% endspaceless %}
 {% endblock %}
@@ -106,13 +108,14 @@
 {% endblock %}
 
 {% block button_row %}
+    {% set layout = layout|default %}
     {% spaceless %}
-        {% if layout|default == 'horizontal' %}
+        {% if layout == 'horizontal' %}
         <div class="form-group">
             <div class="col-lg-offset-2 col-lg-10">
         {% endif %}
                 {{ form_widget(form) }}
-        {% if layout|default == 'horizontal' %}
+        {% if layout == 'horizontal' %}
             </div>
         </div>
         {% endif %}
