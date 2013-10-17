@@ -1,7 +1,0 @@
-{% macro parse(columns) %}
-    {% set parsedColumns = [] %}
-    {% for size,value in columns %}
-        {% set parsedColumns = parsedColumns|merge([['col', size, value]|join('-')]) %}
-    {% endfor %}
-    {{ parsedColumns|join(' ') }}
-{% endmacro %}
