@@ -7,5 +7,11 @@
                  class="Elnur\Bundle\BootstrapBundle\Form\Extension\ButtonTypeExtension">
             <tag name="form.type_extension" alias="button"/>
         </service>
+        <service id="elnur_bootstrap.horizontal_form_extension"
+                 class="Elnur\Bundle\BootstrapBundle\Form\Extension\HorizontalFormTypeExtension">
+                <argument>%elnur_bootstrap.wrapper_attr%</argument>
+                <argument>%elnur_bootstrap.label_class%</argument>
+            <tag name="form.type_extension" alias="form" />
+        </service>
     </services>
 </container>

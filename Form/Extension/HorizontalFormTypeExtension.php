@@ -6,17 +6,26 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ButtonTypeExtension extends AbstractTypeExtension
+class HorizontalFormTypeExtension extends AbstractTypeExtension
 {
+    protected $wrapperAttr;
+    protected $defaultLabelClass;
+
+    public function __construct(array $wrapperAttr, $defaultLabelClass)
+    {
+        $this->wrapperAttr = $wrapperAttr;
+        $this->defaultLabelClass = $defaultLabelClass;
+    }
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'context' => 'default',
-            'icon' => null,
-        ));
+        $defaults = array(
+            'wrapper_attr' => $this->wrapperAttr,
+        );
+        $resolver->setDefaults($defaults);
     }
 
     /**
@@ -27,9 +36,10 @@ class ButtonTypeExtension extends AbstractTypeExtension
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $view->vars = array_merge($view->vars, array(
-            'context' => $options['context'],
-            'icon' => $options['icon'],
+            'wrapper_attr' => $options['wrapper_attr'],
+            'default_label_class' => $this->defaultLabelClass
         ));
+
     }
 
     /**
@@ -37,6 +47,6 @@ class ButtonTypeExtension extends AbstractTypeExtension
      */
     public function getExtendedType()
     {
-        return 'button';
+        return 'form';
     }
 }

@@ -17,6 +17,12 @@
     {{ parent() }}
 {% endblock %}
 
+{% block wrapper_attributes %}
+    {% spaceless %}
+        {% for attrname,attrvalue in wrapper_attr %}{{ attrname }}="{{ attrvalue }}"{% endfor %}
+    {% endspaceless %}
+{% endblock %}
+
 {% block form_rows %}
     {% spaceless %}
         {% for child in form %}
@@ -31,10 +37,13 @@
     {% spaceless %}
         <div class="form-group {% if errors is not empty %}has-error{% endif %}">
             {% if not labels_to_placeholders %}
-                {{ form_label(form, false, {label_attr: {class: (layout == 'horizontal' ? 'col-lg-2 control-label' : '') }}) }}
+                {% if (label_attr.class is not defined or label_attr.class is empty) and layout == 'horizontal'%}
+                    {% set label_attr = label_attr|merge({class: default_label_class}) %}
+                {% endif %}
+                {{ form_label(form, false, {label_attr: {class: ((layout == 'horizontal' ? 'control-label ' : '') ~ label_attr.class|default)|trim  }}) }}
             {% endif %}
 
-            {% if layout == 'horizontal' %}<div class="col-lg-10">{% endif %}
+            {% if layout == 'horizontal' %}<div {{ block('wrapper_attributes') }}>{% endif %}
                 {% if labels_to_placeholders %}
                     {% set attr = attr|merge({placeholder: label}) %}
                 {% endif %}
@@ -112,7 +121,7 @@
     {% spaceless %}
         {% if layout == 'horizontal' %}
         <div class="form-group">
-            <div class="col-lg-offset-2 col-lg-10">
+            <div class="{{ block('wrapper_attributes') }}">
         {% endif %}
                 {{ form_widget(form) }}
         {% if layout == 'horizontal' %}
