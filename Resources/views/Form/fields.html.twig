@@ -1,5 +1,4 @@
 {% extends 'form_div_layout.html.twig' %}
-
 {% block form_start %}
     {% set layout = layout|default %}
     {% set class = attr.class|default %}
@@ -26,15 +25,18 @@
 {% endblock %}
 
 {% block form_row %}
+    {% if processColumns is not defined %}
+        {% import 'ElnurBootstrapBundle:Form:processColumns.html.twig' as processColumns %}
+    {% endif %}
     {% set layout = layout|default %}
     {% set labels_to_placeholders = labels_to_placeholders|default(false) %}
     {% spaceless %}
         <div class="form-group {% if errors is not empty %}has-error{% endif %}">
             {% if not labels_to_placeholders %}
-                {{ form_label(form, false, {label_attr: {class: (layout == 'horizontal' ? wrapper_class.label ~ ' control-label' : '') }}) }}
+                {{ form_label(form, false, {label_attr: {class: (layout == 'horizontal' ? processColumns.parse(columns, layout_columns)|trim ~ ' control-label' : '') }}) }}
             {% endif %}
 
-            {% if layout == 'horizontal' %}<div class="{{ wrapper_class.widget }}">{% endif %}
+            {% if layout == 'horizontal' %}<div class="{{ processColumns.parse(columns)|trim }}">{% endif %}
                 {% if labels_to_placeholders %}
                     {% set attr = attr|merge({placeholder: label}) %}
                 {% endif %}
@@ -108,11 +110,14 @@
 {% endblock %}
 
 {% block button_row %}
+    {% if processColumns is not defined %}
+        {% import 'ElnurBootstrapBundle:Form:processColumns.html.twig' as processColumns %}
+    {% endif %}
     {% set layout = layout|default %}
     {% spaceless %}
         {% if layout == 'horizontal' %}
         <div class="form-group">
-            <div class="col-lg-offset-2 {{ wrapper_class.widget }}">
+            <div class="col-lg-offset-2 {{ processColumns.parse(columns)|trim }}">
         {% endif %}
                 {{ form_widget(form) }}
         {% if layout == 'horizontal' %}

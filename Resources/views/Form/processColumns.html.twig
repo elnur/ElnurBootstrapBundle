@@ -1,0 +1,11 @@
+{% macro parse(columns, layout_columns) %}
+    {% set parsedColumns = [] %}
+    {% for size,value in columns %}
+        {% if layout_columns is empty %}
+            {% set parsedColumns = parsedColumns|merge([['col', size, value]|join('-')]) %}
+        {% else %}
+            {% set parsedColumns = parsedColumns|merge([['col', size, layout_columns-value]|join('-')]) %}
+        {% endif %}
+    {% endfor %}
+    {{ parsedColumns|join(' ') }}
+{% endmacro %}

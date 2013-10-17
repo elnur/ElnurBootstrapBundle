@@ -14,7 +14,10 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->arrayNode('wrapper_size')
+                ->integerNode('layout_columns')
+                    ->defaultValue(12)
+                ->end()
+                ->arrayNode('columns')
                 ->addDefaultsIfNotSet()
                 ->children()
                     ->integerNode('lg')

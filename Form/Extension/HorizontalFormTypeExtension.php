@@ -8,11 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class HorizontalFormTypeExtension extends AbstractTypeExtension
 {
-    protected $wrapperSize;
+    protected $columns;
+    protected $layoutColumns;
 
-    public function __construct(array $wrapperSize)
+    public function __construct(array $columns, $layoutColumns)
     {
-        $this->wrapperSize = $wrapperSize;
+        $this->columns = $columns;
+        $this->layoutColumns = $layoutColumns;
     }
 
     /**
@@ -20,7 +22,12 @@ class HorizontalFormTypeExtension extends AbstractTypeExtension
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array('wrapper_size' => $this->wrapperSize));
+        $resolver->setDefaults(
+            array(
+                'columns' => $this->columns,
+                'layoutColumns' => $this->layoutColumns
+            )
+        );
     }
 
     /**
@@ -31,7 +38,8 @@ class HorizontalFormTypeExtension extends AbstractTypeExtension
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $view->vars = array_merge($view->vars, array(
-            'wrapper_class' => $this->processWrapperSize($options['wrapper_size']),
+            'columns' => $options['columns'],
+            'layout_columns' => $options['layoutColumns']
         ));
     }
 
@@ -41,26 +49,5 @@ class HorizontalFormTypeExtension extends AbstractTypeExtension
     public function getExtendedType()
     {
         return 'form';
-    }
-
-    /**
-     * @param array $wrapperSize
-     *
-     * @return array
-     */
-    protected function processWrapperSize(array $wrapperSize)
-    {
-        $widgetClass = array();
-        $labelClass = array();
-
-        foreach ($wrapperSize as $size => $value) {
-            $widgetClass[] = 'col-' . $size . '-' . $value;
-            $labelClass[] = 'col-' . $size . '-' . (12-$value);
-        }
-
-        return array(
-            'widget' => implode(' ', $widgetClass),
-            'label'  => implode(' ', $labelClass)
-        );
     }
 }
