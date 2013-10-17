@@ -35,8 +35,36 @@ Then enable the bundle by adding the following to your `AppKernel.php`:
         // ...
     }
 
+Configuration
+-------------
+
+You can globally customize the default attributes for the widget wrapper div and the labels in horizontal layout by the
+following options in your `config.yml`
+
+    elnur_bootstrap:
+        wrapper_attr:
+            class:  'col-lg-9 col-lg-offset-1'
+        label_class: 'col-lg-2'
+
+On the label only the class is customizable as such to avoid overwriting defaults.
+
 Forms
 -----
+
+In the form builder you can change the attributes by using the `wrapper_attr` and `label_attr` options:
+
+    //...
+    $builder->add('someFieldName', 'text', array(
+        'wrapper_attr' => array(
+            'class' => 'col-lg-5 col-md-6',
+        ),
+        'label_attr' => array(
+            'class' => 'col-lg-7'
+        )
+    ));
+    //...
+
+Be careful, the attributes overwrite the previous ones. They do not get appended or merged to them.
 
 To render a form with the default Bootstrap layout, just do the following:
 
@@ -52,6 +80,12 @@ Supported layouts are:
 * `horizontal`,
 * `inline`, and
 * `navbar`.
+
+You can also change the wrapper and label atttributes in the template:
+
+    {{ form(form, {layout: 'horizontal', wrapper_attr: {class: 'col-lg-5 col-sm-6'}, label_attr: {class: 'col-lg-5 col-lg-offset-1 }) }}
+
+Be careful, the attributes overwrite the previous ones. They do not get appended or merged to them.
 
 Flash Messages
 --------------
