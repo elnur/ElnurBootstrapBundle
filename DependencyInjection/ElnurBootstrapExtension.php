@@ -47,12 +47,18 @@ class ElnurBootstrapExtension extends Extension implements PrependExtensionInter
     }
 
     /**
-     * @param array $config
+     * @param array            $configs
      * @param ContainerBuilder $container
      */
     public function load(array $config, ContainerBuilder $container)
     {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $config);
+
+        $container->setParameter('elnur_bootstrap.wrapper_size', $config['wrapper_size']);
+
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
     }
 }
