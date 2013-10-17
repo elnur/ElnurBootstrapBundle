@@ -8,11 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class HorizontalFormTypeExtension extends AbstractTypeExtension
 {
-    protected $columns;
+    protected $wrapperAttr;
+    protected $defaultLabelClass;
 
-    public function __construct(array $columns)
+    public function __construct(array $wrapperAttr, $defaultLabelClass)
     {
-        $this->columns = $columns;
+        $this->wrapperAttr = $wrapperAttr;
+        $this->defaultLabelClass = $defaultLabelClass;
     }
 
     /**
@@ -20,11 +22,10 @@ class HorizontalFormTypeExtension extends AbstractTypeExtension
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(
-            array(
-                'columns' => $this->columns,
-            )
+        $defaults = array(
+            'wrapper_attr' => $this->wrapperAttr,
         );
+        $resolver->setDefaults($defaults);
     }
 
     /**
@@ -35,8 +36,10 @@ class HorizontalFormTypeExtension extends AbstractTypeExtension
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $view->vars = array_merge($view->vars, array(
-            'columns' => $options['columns'],
+            'wrapper_attr' => $options['wrapper_attr'],
+            'default_label_class' => $this->defaultLabelClass
         ));
+
     }
 
     /**

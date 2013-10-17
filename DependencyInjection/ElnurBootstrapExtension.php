@@ -55,7 +55,8 @@ class ElnurBootstrapExtension extends Extension implements PrependExtensionInter
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $config);
 
-        $container->setParameter('elnur_bootstrap.columns', $config['columns']);
+        $container->setParameter('elnur_bootstrap.wrapper_attr', $config['wrapper_attr']);
+        $container->setParameter('elnur_bootstrap.label_class', $config['label_class']);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
