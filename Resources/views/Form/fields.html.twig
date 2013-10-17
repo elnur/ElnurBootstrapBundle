@@ -33,7 +33,7 @@
     {% spaceless %}
         <div class="form-group {% if errors is not empty %}has-error{% endif %}">
             {% if not labels_to_placeholders %}
-                {{ form_label(form, false, {label_attr: {class: (layout == 'horizontal' ? processColumns.parse(columns, layout_columns)|trim ~ ' control-label' : '') }}) }}
+                {{ form_label(form, false, {label_attr: {class: (layout == 'horizontal' ? 'col-lg-2 control-label' : '') }}) }}
             {% endif %}
 
             {% if layout == 'horizontal' %}<div class="{{ processColumns.parse(columns)|trim }}">{% endif %}

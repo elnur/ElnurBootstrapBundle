@@ -9,12 +9,10 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class HorizontalFormTypeExtension extends AbstractTypeExtension
 {
     protected $columns;
-    protected $layoutColumns;
 
-    public function __construct(array $columns, $layoutColumns)
+    public function __construct(array $columns)
     {
         $this->columns = $columns;
-        $this->layoutColumns = $layoutColumns;
     }
 
     /**
@@ -25,7 +23,6 @@ class HorizontalFormTypeExtension extends AbstractTypeExtension
         $resolver->setDefaults(
             array(
                 'columns' => $this->columns,
-                'layoutColumns' => $this->layoutColumns
             )
         );
     }
@@ -39,7 +36,6 @@ class HorizontalFormTypeExtension extends AbstractTypeExtension
     {
         $view->vars = array_merge($view->vars, array(
             'columns' => $options['columns'],
-            'layout_columns' => $options['layoutColumns']
         ));
     }
 

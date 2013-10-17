@@ -10,7 +10,6 @@
         <service id="elnur_bootstrap.horizontal_form_extension"
                  class="Elnur\Bundle\BootstrapBundle\Form\Extension\HorizontalFormTypeExtension">
                 <argument>%elnur_bootstrap.columns%</argument>
-                <argument>%elnur_bootstrap.layout_columns%</argument>
             <tag name="form.type_extension" alias="form" />
         </service>
     </services>
