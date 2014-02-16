@@ -60,7 +60,7 @@
 
 {% block form_widget_simple %}
     {% if type|default != 'file' %}
-        {% set attr = attr|merge({class: 'form-control'}) %}
+        {% set attr = attr|merge({class: 'form-control ' ~ attr.class|default}) %}
     {% endif %}
     {{ parent() }}
 {% endblock %}
