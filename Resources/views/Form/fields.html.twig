@@ -62,7 +62,19 @@
     {% if type|default != 'file' %}
         {% set attr = attr|merge({class: 'form-control ' ~ attr.class|default}) %}
     {% endif %}
+    {% if append or prepend %}
+        <div class="input-group">
+    {% endif %}
+    {% if prepend %}
+        <span class="input-group-addon">{{ prepend|trans({}, translation_domain) }}</span>
+    {% endif %}
     {{ parent() }}
+    {% if append %}
+        <span class="input-group-addon">{{ append|trans({}, translation_domain) }}</span>
+    {% endif %}
+    {% if append or prepend %}
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block choice_widget_collapsed %}

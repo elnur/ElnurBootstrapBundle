@@ -7,5 +7,9 @@
                  class="Elnur\Bundle\BootstrapBundle\Form\Extension\ButtonTypeExtension">
             <tag name="form.type_extension" alias="button"/>
         </service>
+        <service id="elnur_bootstrap.group_type_extension"
+                 class="Elnur\Bundle\BootstrapBundle\Form\Extension\GroupTypeExtension">
+            <tag name="form.type_extension" alias="form"/>
+        </service>
     </services>
 </container>
