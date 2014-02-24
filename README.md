@@ -53,6 +53,27 @@ Supported layouts are:
 * `inline`, and
 * `navbar`.
 
+Buttons
+-------
+
+### Context
+
+To set a button's context, use the `context` option:
+
+    $builder->add('submit', 'submit', array(
+        'context' => 'primary',
+    ));
+
+Bootstrap ships with the following contexts:
+
+* `default`,
+* `primary`,
+* `success`,
+* `info`,
+* `warning`,
+* `danger`, and
+* `link`.
+
 Flash Messages
 --------------
 
