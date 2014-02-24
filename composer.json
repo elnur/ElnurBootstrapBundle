@@ -15,7 +15,11 @@
         }
     ],
     "require": {
-        "symfony/twig-bridge": "~2.3"
+        "symfony/twig-bridge": "~2.3",
+        "symfony/form": "~2.3",
+        "symfony/dependency-injection": "~2.3",
+        "symfony/http-kernel": "~2.3",
+        "symfony/config": "~2.3"
     },
     "autoload": {
         "psr-0": {
