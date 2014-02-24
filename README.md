@@ -84,6 +84,13 @@ To prepend or append textual addons to an input, use the `prepend` and `append` 
         'append' => '.00',
     ));
 
+Converting Labels to Placeholders
+---------------------------------
+
+If you want to convert labels to placeholders, set the `labels_to_placeholders` option to `true`:
+
+    {{ form(form, {labels_to_placeholders: true}) }}
+
 Flash Messages
 --------------
 
