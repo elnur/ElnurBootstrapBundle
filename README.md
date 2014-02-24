@@ -15,7 +15,7 @@ To install the bundle itself, add the following to your `composer.json`:
 
     {
         "require": {
-            "elnur/bootstrap-bundle": "~0.1@dev"
+            "elnur/bootstrap-bundle": "~0.1"
         }
     }
 
