@@ -74,6 +74,16 @@ Bootstrap ships with the following contexts:
 * `danger`, and
 * `link`.
 
+Input groups
+------------
+
+To prepend or append textual addons to an input, use the `prepend` and `append` options, respectively:
+
+    $builder->add('price', 'integer', array(
+        'prepend' => '$',
+        'append' => '.00',
+    ));
+
 Flash Messages
 --------------
 
