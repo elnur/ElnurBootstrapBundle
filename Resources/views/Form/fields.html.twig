@@ -103,7 +103,7 @@
         <div class="checkbox">
             <label>
                 {{ form_widget(form) }}
-                {{ form_label(form) }}
+                {{ form.vars.label|trans({}, translation_domain) }}
             </label>
         </div>
     {% endspaceless %}
