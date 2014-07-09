@@ -100,8 +100,8 @@
 
 {% block checkbox_row %}
     {% spaceless %}
-        <div class="checkbox">
-            <label>
+        <div class="checkbox {% if errors is not empty %}has-error{% endif %}">
+            <label class="control-group">
                 {{ form_widget(form) }}
                 {{ form.vars.label|trans({}, translation_domain) }}
             </label>
