@@ -22,11 +22,10 @@
         "symfony/config": "~2.3"
     },
     "autoload": {
-        "psr-0": {
-            "Elnur\\Bundle\\BootstrapBundle": ""
+        "psr-4": {
+            "Elnur\\Bundle\\BootstrapBundle\\": ""
         }
     },
-    "target-dir": "Elnur/Bundle/BootstrapBundle",
     "extra": {
         "branch-alias": {
             "dev-master": "0.2.x-dev"
