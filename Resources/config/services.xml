@@ -10,10 +10,10 @@
 
     <services>
         <service id="elnur_bootstrap.button_type_extension" class="%elnur_bootstrap.button_type_extension.class%">
-            <tag name="form.type_extension" alias="button"/>
+            <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\ButtonType"/>
         </service>
         <service id="elnur_bootstrap.group_type_extension" class="%elnur_bootstrap.group_type_extension.class%">
-            <tag name="form.type_extension" alias="form"/>
+            <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
         </service>
     </services>
 </container>
