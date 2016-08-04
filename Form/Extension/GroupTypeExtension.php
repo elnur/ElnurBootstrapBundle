@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2013-2014 Elnur Abdurrakhimov
+ * Copyright (c) 2013-2016 Elnur Abdurrakhimov
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,9 @@
  */
 namespace Elnur\Bundle\BootstrapBundle\Form\Extension;
 
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\AbstractTypeExtension;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -56,6 +58,6 @@ class GroupTypeExtension extends AbstractTypeExtension
      */
     public function getExtendedType()
     {
-        return 'form';
+        return method_exists(AbstractType::class, 'getBlockPrefix') ? FormType::class : 'form';
     }
 }
